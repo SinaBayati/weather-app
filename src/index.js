@@ -32,6 +32,60 @@ function submitHandler(event){
   }
 }
 
+function getIcon(iconDescription){
+  let result = "";
+  switch (iconDescription){
+    case "sunny":
+      result = "☀️";
+      break;
+    case "scattered clouds":
+      result = "⛅";
+      break;
+    case "haze":
+      result = "😶‍🌫️";
+      break;
+    case "cloudy":
+      result = "☁️";
+      break;
+    case "rainy":
+      result = "🌧️"
+      break;
+    case "snowy":
+      result = "🌨️"
+    default:
+      result = "🤔";
+      break;
+  }
+  return result;
+}
+
 function addWeather(data){
-  // create and add a card to the page
+  console.log(data);
+  const template = 
+  `
+<div class="card">
+  <div class="header">
+    <div class="left">
+      <span>${data.name}</span>
+      <span>${new Date().toDateString()}</span>
+    </div>
+    <div class="right">
+      <span>${getIcon(data.weather[0].description)}</span>
+      <span>${data.weather[0].description}</span>
+    </div>
+  </div>
+  <div class="main">
+    <div class="tp">${(data.main.temp - 273).toFixed(1)}°C</div>
+    <div>
+      <span>Humidity ${data.main.humidity}%</span>
+      <span>Pressure ${data.main.pressure}hPa</span>
+    </div>
+  </div>
+</div>
+  `;
+
+  document.querySelector("#target")
+    .innerHTML = null;
+  document.querySelector("#target")
+    .insertAdjacentHTML("afterbegin",template);
 }
