@@ -5,7 +5,7 @@ import {
 } from './modules/weather';
 
 const inputEl = document.querySelector("#city");
-const tempKey = "23f84a7ed3bef67a51a44d47ea5a393d";
+const tempKey = "1669f34ccb83df0bddf702e7e6dfc99c";
 
 function validateUserInput(inputElement){
   if (inputElement.validity.valid){
